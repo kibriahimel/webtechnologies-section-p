@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product order</title>
+
+    <script>
+        const unitPrice = 800;
+
+        function calculateTotal() {
+
+            let qty = document.getElementById("quantity").value;
+
+            if (qty < 0) {
+                alert("Quantity cannot be negative");
+                document.getElementById("quantity").value = 0;
+                qty = 0;
+            }
+
+            let total = unitPrice * qty;
+
+            document.getElementById("totalPrice").value = total;
+
+            if (total > 1000) {
+                alert("Congratulations! You are eligible for a Gift Coupon!");
+            }
+
+        }
+
+        function orderNow() {
+            alert("Order placed successfully");
+            location.reload();
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <h2>Product order</h2>
+
+    <label>Unit Price</label><br>
+    <input type="text" value="800" readonly><br><br>
+
+    <label>Quantity</label><br>
+    <input type="number" id="quantity" value="0" oninput="calculateTotal()"><br><br>
+
+    <label>Total Price</label><br>
+    <input type="text" id="totalPrice" value="0" readonly><br><br>
+
+    <button onclick="orderNow()" style="padding:8px 20px;">Order</button>
+
+</body>
+
+</html>
